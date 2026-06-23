@@ -1,28 +1,7 @@
-# Reflection — Lab 19
+# Lab 19 Reflection
 
-**Tên:** _<Họ Tên>_
-**Cohort:** _<A20-K1 / A20-K2 / ...>_
-**Path đã chạy:** _<lite | docker | both>_
+**Khi nào Hybrid Search chiến thắng?**
+Hybrid Search phát huy sức mạnh tối đa trên các truy vấn dạng "mixed" (trộn lẫn). Khi người dùng vừa dùng từ khóa chuyên ngành (cần độ chính xác tuyệt đối của BM25), vừa dùng các cụm từ mô tả tự nhiên (cần khả năng hiểu ngữ nghĩa paraphrase của Vector). Công thức Reciprocal Rank Fusion (RRF) giúp đẩy những kết quả xuất hiện ở top của cả 2 thuật toán lên cao nhất, khắc phục điểm mù của từng phương pháp đơn lẻ.
 
----
-
-## Câu hỏi (≤ 200 chữ)
-
-> Trên golden set 50 queries, mode nào thắng ở loại query nào (`exact` /
-> `paraphrase` / `mixed`), và tại sao? Khi nào bạn **không** dùng hybrid
-> (i.e. khi nào pure BM25 hoặc pure vector là lựa chọn đúng)?
-
-_Answer here._
-
----
-
-## Điều ngạc nhiên nhất khi làm lab này
-
-_(Optional, 1–2 câu)_
-
----
-
-## Bonus challenge
-
-- [ ] Đã làm bonus (xem `bonus/`)
-- [ ] Pair work với: _<tên đồng đội nếu có>_
+**Khi nào không nên dùng Hybrid?**
+Không nên dùng Hybrid khi hệ thống cần ưu tiên 100% "Exact Match", ví dụ: tra cứu mã số lỗi kỹ thuật (Error Code), mã đơn hàng, hoặc tên cấu hình server cụ thể. Trong trường hợp này, Semantic Search có xu hướng "hiểu nhầm" các mã này sang các mã tương đồng về mặt hình thức, làm loãng kết quả của BM25. Ngoài ra, trên các truy vấn thuần túy Paraphrase không có từ khóa gốc, Vector Search độc lập thường đã hoạt động đủ tốt mà không cần tốn thêm tài nguyên tính toán BM25 và RRF.
